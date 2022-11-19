@@ -1,0 +1,30 @@
+﻿@using R5T.E0064.W001.N005.Internal
+
+@namespace R5T.E0064.W001.N005
+
+
+ <TableOfContentsContent
+    Identity="@this.Identity"
+    Text="@this.Text"
+    Level="@this.Level" />
+
+
+@code {
+    /// <summary>
+    /// Just include the same content as from inside the heading element.
+    /// </summary>
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public int Level { get; set; }
+
+    public string Identity
+    {
+        get
+        {
+            var identity = HtmlIdentityOperator.Instance.GetHeadingIdentity(this.Text);
+            return identity;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+﻿@*
+    Somehow C# cannot go inside an HTML tag?
+    So I need to do this.
+*@
+@if(this.HasTitle)
+{
+    <a href="@this.Url" title="@this.Title">@this.ActualDisplayText</a>
+}
+else
+{
+    <a href="@this.Url">@this.ActualDisplayText</a>
+}
+
+@code{
+    [Parameter]
+    public string DisplayText { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Url { get; set; }
+
+    string ActualDisplayText { get; set; }
+    bool HasTitle { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        if(F0000.StringOperator.Instance.IsNullOrEmpty(this.DisplayText))
+        {
+            this.ActualDisplayText = this.Url;
+        }
+        else
+        {
+            this.ActualDisplayText = this.DisplayText;
+        }
+
+        this.HasTitle = F0000.StringOperator.Instance.IsNotNullAndNotEmpty(this.Title);
+    }
+}

@@ -1,0 +1,40 @@
+﻿@page "/Blog/{postIdentifier}"
+
+@inject BlogPostTextProvider BlogPostTextProvider
+@inject NavigationManager NavigationManager
+
+@if(this.BlogPostFound)
+{
+    @(new MarkupString(this.BlogPostText))
+}
+else
+{
+    <h1>Blog Post Router</h1>
+
+    <h2>No blog post found!</h2>
+
+    <p>@this.NavigationManager.Uri: URL</p>
+    <p>@this.BlogPostName: Page name</p>
+    <p>@this.PostIdentifier: Post identifier</p>   
+}
+
+@code {
+    bool BlogPostFound { get; set; }
+    string BlogPostText { get; set; }
+    string BlogPostName { get; set; }
+
+    [Parameter]
+    public string PostIdentifier { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        this.BlogPostName = new Uri(this.NavigationManager.Uri).Segments.Last();
+
+        this.BlogPostFound = this.BlogPostTextProvider.HasBlogPost(this.BlogPostName);
+
+        if(this.BlogPostFound)
+        {
+            this.BlogPostText = await this.BlogPostTextProvider.GetBlogPostText(this.BlogPostName);
+        }
+    }
+}

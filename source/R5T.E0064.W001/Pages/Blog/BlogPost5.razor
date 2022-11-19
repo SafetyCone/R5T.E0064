@@ -1,0 +1,43 @@
+﻿@using R5T.E0064.W001.N005
+
+
+@namespace R5T.E0064.W001.Blog
+
+<TableOfContentsContext>
+
+    <h1>Heading 1-1</h1>
+    <TableOfContentsEntry Text="Heading 1-1" Level="1" />
+
+    <h2>Heading 2-1</h2>
+    <TableOfContentsEntry Text="Heading 2-1" Level="2" />
+
+    <h1>Heading 1-2</h1>
+    <TableOfContentsEntry Text="Heading 1-2" Level="1" />
+
+    <h3>Heading 3-1</h3>
+    <TableOfContentsEntry Text="Heading 3-1" Level="3" />
+
+    <h3>Heading 3-2</h3>
+    <TableOfContentsEntry Text="Heading 3-2" Level="3" />
+
+</TableOfContentsContext>
+
+<TableOfContentsContext>
+
+    <h2>Heading 2-1</h2>
+    <TableOfContentsEntry Text="Heading 2-1" Level="2" />
+
+    <h2>Heading 2-2</h2>
+    @*Note, not included in the table of contents.*@
+    
+    <h2>Heading 2-1</h2>
+    <TableOfContentsEntry Text="Heading 2-1" Level="2" />
+
+    <h2>Heading 3-2</h2>
+    <TableOfContentsEntry Text="Heading 3-2" Level="3" />
+
+</TableOfContentsContext>
+
+@code {
+
+}

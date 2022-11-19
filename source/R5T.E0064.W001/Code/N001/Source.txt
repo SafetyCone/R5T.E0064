@@ -1,0 +1,7 @@
+﻿The SectionContent, SectionOutlet, and SectionRegistry classes are from here:
+https://gist.github.com/SteveSandersonMS/4f08efe2ad32178add12bfa3eb6e4559
+
+Here are sources for:
+
+* HeadContent: https://github.com/dotnet/aspnetcore/blob/a450cb69b5e4549f5515cdb057a68771f56cefd7/src/Components/Web/src/Head/HeadContent.cs
+* HeadOutlet: https://github.com/dotnet/aspnetcore/blob/a450cb69b5e4549f5515cdb057a68771f56cefd7/src/Components/Web/src/Head/HeadOutlet.cs

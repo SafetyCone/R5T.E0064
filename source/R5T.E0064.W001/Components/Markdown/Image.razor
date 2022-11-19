@@ -1,0 +1,34 @@
+﻿@*
+    Somehow C# cannot go inside an HTML tag?
+    So I need to do this.
+*@
+@if(this.HasTitle)
+{
+    <img src="@this.Source" title="@this.Title" alt="@this.AlternateText">
+}
+else
+{
+    <img src="@this.Source" alt="@this.AlternateText">
+}
+
+@code{
+    /// <summary>
+    /// This stuff
+    /// </summary>
+    [Parameter]
+    public string AlternateText { get; set; }
+
+    [Parameter]
+    public string Source { get; set; }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    bool HasTitle { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        this.HasTitle = F0000.StringOperator.Instance.IsNotNullAndNotEmpty(this.Title);
+    }
+}

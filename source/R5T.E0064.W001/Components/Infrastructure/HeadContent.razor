@@ -1,0 +1,62 @@
+﻿@*
+    https://github.com/dotnet/aspnetcore/blob/a450cb69b5e4549f5515cdb057a68771f56cefd7/src/Components/Web/src/Head/HeadContent.cs
+*@
+
+@inherits ComponentBase
+
+<p>Head Content</p>
+
+@code {
+    [Parameter]
+    public string Value { get; set; }
+
+    [CascadingParameter]
+    public List<string> HeadContents { get; set; }
+
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        foreach (var parameter in parameters)
+        {
+            Console.WriteLine(parameter.Name);
+        }
+        Console.WriteLine(nameof(SetParametersAsync));
+
+        //return Task.CompletedTask;
+
+        // Required to get any other lifecycle events.
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine(nameof(OnInitialized));
+
+        //this.ShouldRender();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        Console.WriteLine(nameof(OnInitializedAsync));
+
+        return Task.CompletedTask;
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine(nameof(OnParametersSet));
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        Console.WriteLine(nameof(OnParametersSetAsync));
+
+        return Task.CompletedTask;
+    }
+
+    // Not called on the server.
+    protected override void OnAfterRender(bool firstRender)
+    {
+        this.HeadContents.Add(this.Value);
+    }
+}

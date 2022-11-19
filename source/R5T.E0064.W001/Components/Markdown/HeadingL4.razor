@@ -1,0 +1,14 @@
+﻿<h4>@this.Value</h4>
+
+@if (this.IncludeInTableOfContents)
+{
+
+}
+
+@code{
+    [Parameter]
+    public bool IncludeInTableOfContents { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+}

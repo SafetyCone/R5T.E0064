@@ -1,0 +1,37 @@
+﻿@*
+    https://github.com/dotnet/aspnetcore/blob/a450cb69b5e4549f5515cdb057a68771f56cefd7/src/Components/Web/src/Head/HeadOutlet.cs
+*@
+
+<p>Head</p>
+
+<CascadingValue Value="this.HeadContents">
+    @this.ChildContent
+</CascadingValue>
+
+@foreach (var headContent in this.HeadContents)
+{
+    <p>headContent</p>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private List<string> HeadContents { get; } = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine(F0000.StringOperator.Instance.Join(", ", this.HeadContents));
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine(F0000.StringOperator.Instance.Join(", ", this.HeadContents));
+    }
+
+    // Not called on the server.
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine(F0000.StringOperator.Instance.Join(", ", this.HeadContents));
+    }
+}

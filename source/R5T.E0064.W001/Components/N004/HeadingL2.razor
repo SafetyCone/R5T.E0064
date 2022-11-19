@@ -1,0 +1,20 @@
+﻿@namespace R5T.E0064.W001.N004
+
+
+<h2>@this.Value</h2>
+
+@if(this.IncludeInTableOfContents)
+{
+    <TableOfContentsContent
+        Identity="@(HtmlIdentityOperator.Instance.GetHeadingIdentity(this.Value))"
+        Text="@this.Value"
+        Level="2" />
+}
+
+@code{
+    [Parameter]
+    public bool IncludeInTableOfContents { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+}
