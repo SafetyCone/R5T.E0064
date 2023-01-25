@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Components;
 
+
 namespace R5T.E0064.W001.N005.Internal
 {
     public class HeadingBase : ComponentBase
