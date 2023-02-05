@@ -25,7 +25,7 @@ namespace R5T.E0064.W001.N006
             }
 
             // Get the parent to which the child should be added.
-            TableOfContentsNode GetParentForChild(
+            static TableOfContentsNode GetParentForChild(
                 TableOfContentsNode priorNode,
                 TableOfContentsNode node)
             {
